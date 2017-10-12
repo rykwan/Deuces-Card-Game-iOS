@@ -12,7 +12,7 @@ import UIKit
 
 
 class Player {
-    //MARK: properties
+    //MARK: member variables
     var hand = [Card]()
     private var m_name : String
     var m_game : Game
@@ -74,11 +74,6 @@ class HumanPlayer : Player{
         
         guard let combo = CardCombo(cards: cards ) else {
             return nil
-        }
-        guard m_game.lastHandPlayed != nil else {
-            m_game.lastHandPlayed = cards
-            removeCards(cards: cards)
-            return combo
         }
         if lastwin || m_game.lastHandPlayed.isEmpty
         {

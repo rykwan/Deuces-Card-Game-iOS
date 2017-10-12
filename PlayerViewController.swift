@@ -26,6 +26,7 @@ class PlayerVC: UIViewController {
     {
         super.viewDidLoad()
         
+        
         setUpImages()
         nextTurnBtnOutlet.isHidden = true
         
@@ -45,7 +46,7 @@ class PlayerVC: UIViewController {
     }
     
     func showPlayerViewOf(player: Player, lastPlayed: [Card], lastwin: Bool) {
-        playerNameLabel.text = player.name()
+        playerNameLabel.text = "\(player.name())'s Turn"
         m_lastwin = lastwin
         currentPlayer = player
         cardsToPlay.removeAll()
@@ -94,9 +95,24 @@ class PlayerVC: UIViewController {
         {
             m_game?.lastHandPlayed = cardsToPlay
             updateTableCards(lastPlayed: cardsToPlay)
+            
+            if currentPlayer?.numCardsLeft() == 0
+            {
+                playerNameLabel.text = "\(currentPlayer?.name()) wins!"
+            }
+            else
+            {
+            
             nextTurnBtnOutlet.isHidden = false
             playTurnBtnOutlet.isHidden = true
             passTurnBtnOutlet.isHidden = true
+            for cv in cardViews{
+                cv.isHidden = true
+            }
+            let nextUp = (m_game?.currentTurn)! < 4 ? (m_game?.currentTurn)!+1 : 1
+            playerNameLabel.text = "Next up: " + (m_game?.players[nextUp-1].name())!
+            }
+            
         }
         else
         {
@@ -113,7 +129,10 @@ class PlayerVC: UIViewController {
     }
 
     @IBAction func passButton(_ sender: UIButton) {
+        if !m_lastwin
+        {
         m_game?.play(beat: false)
+        }
     }
     
     //MARK: ImageViews

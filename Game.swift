@@ -9,6 +9,7 @@
 import UIKit
 
 class Game {
+    //MARK: Member Variables
     var lastHandPlayed = [Card]()
     var lastCardPlayer : Int = 1
     var currentTurn : Int = 1
@@ -34,7 +35,7 @@ class Game {
     
     //TODO: order of game play, everyone needs to know
     
-    //TODO: play, return winner
+    // takes info from PlayerVC to update game and take next turn
     func play(beat: Bool) -> Bool {
         if beat
         {

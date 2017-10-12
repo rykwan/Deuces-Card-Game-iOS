@@ -39,16 +39,8 @@ class ViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var firstScreenLeftImage: UIImageView!
     @IBOutlet weak var firstScreenRightImage: UIImageView!
-    @IBOutlet weak var Smallview: UIView!
-   
+    
     @IBAction func startNewGameButton(_ sender: UIButton) {
-        self.view.backgroundColor = UIColor(colorLiteralRed: 120/255, green: 100/255, blue: 0/255, alpha: 1)
-        firstScreenLeftImage.image = Card(suit: "clubs", value: "three")?.image
-      //  let playerGame = storyboard?.instantiateViewController(withIdentifier: "PlayerVC")
-        
-      //  self.present(playerGame!, animated:true, completion:nil)
-    }
-    @IBAction func joinGameButton(_ sender: UIButton) {
         let playerGame = storyboard?.instantiateViewController(withIdentifier: "PlayerVC")
         
         self.present(playerGame!, animated:true, completion:nil)
