@@ -10,13 +10,6 @@ import UIKit
 
 
 class ViewController: UIViewController {
-    @IBAction func justplaybutton(_ sender: UIButton) {
-        let playerGame = storyboard?.instantiateViewController(withIdentifier: "PlayerVC")
-        
-        self.present(playerGame!, animated:true, completion:nil)
-        
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,9 +34,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstScreenRightImage: UIImageView!
     
     @IBAction func startNewGameButton(_ sender: UIButton) {
-        let playerGame = storyboard?.instantiateViewController(withIdentifier: "PlayerVC")
+        let setupGame = storyboard?.instantiateViewController(withIdentifier: "SetupVC")
         
-        self.present(playerGame!, animated:true, completion:nil)
+        self.present(setupGame!, animated:true, completion:nil)
     }
 }
 
